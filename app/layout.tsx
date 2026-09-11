@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-// @ts-expect-error Next.js handles global CSS imports at build time.
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
 
 export const metadata: Metadata = {
   title: {
@@ -20,13 +18,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Sunrise Public School — Admissions Open 2026",
-    description: "Give your child the best start. Play Group to Class 10. Enquire now!",
+    description:
+      "Give your child the best start. Play Group to Class 10. Enquire now!",
     type: "website",
     locale: "en_IN",
   },
 };
 
-// FAQ Schema — Google pe search karne pe directly jawab dikhate hain (rich results)
+// FAQ Schema
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -68,10 +67,15 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
         />
+
         <Navbar />
+
         <main className="flex-1">{children}</main>
+
         <Footer />
       </body>
     </html>
